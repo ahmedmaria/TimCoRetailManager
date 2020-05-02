@@ -28,7 +28,6 @@ namespace TRMDataManager.Controllers
         public void Post([FromBody]string value)
         {
         }
-
         // PUT api/values/5
         public void Put(int id, [FromBody]string value)
         {
