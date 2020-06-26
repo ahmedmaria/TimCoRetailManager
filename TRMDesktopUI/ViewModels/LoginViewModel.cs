@@ -41,6 +41,31 @@ namespace TRMDesktopUI.ViewModels
 				NotifyOfPropertyChange(() => CanLogIn);
 			}
 		}
+		
+
+		public bool IsErrorVisible
+		{
+
+			get {
+				bool output = false;
+				if (ErrorMessage?.Length > 0) 
+				{ output = true; }
+				return output;
+					}
+			
+		}
+		private string _errorMessageVar;
+
+		public string ErrorMessage
+		{
+			get { return _errorMessageVar; }
+			set {
+				_errorMessageVar = value;
+				NotifyOfPropertyChange(() => ErrorMessage);
+				NotifyOfPropertyChange(() => IsErrorVisible);
+
+			}
+		}
 
 		public bool CanLogIn
 		{
@@ -64,12 +89,13 @@ namespace TRMDesktopUI.ViewModels
 		{
 			try
 			{
+				ErrorMessage = "";
 				var result = await _apiHelper.Authenticate(UserName, Password);
 			}
 			catch (Exception ex)
 			{
 
-				Console.WriteLine(ex.Message);
+				ErrorMessage = ex.Message;
 			}
 		}
 

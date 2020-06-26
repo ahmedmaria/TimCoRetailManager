@@ -5,5 +5,5 @@
     [FirstName] NVARCHAR(50) NOT NULL, 
     [LastName] NVARCHAR(50) NOT NULL, 
     [EmailAddress] NVARCHAR(256) NULL, 
-    [CreatDate] DATETIME2 NULL DEFAULT getutctime()
+    [CreatedDate] DATETIME2 NULL DEFAULT getutcdate()
 )
